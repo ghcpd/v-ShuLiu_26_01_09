@@ -1,0 +1,74 @@
+User: Prompt
+
+You are maintaining an open-source backend Todo API service (Python/FastAPI) that has recently gained more contributors, including backend engineers and SREs.
+
+Task
+- Review the repository’s collaboration and operations artifacts: issues, pull requests, labels, .github metadata, docs/, ops/, and CONTRIBUTING.
+- Infer how backend work and operations are actually coordinated in practice over time.
+- Focus on:
+  - how incidents and hotfixes are handled,
+  - how breaking API / DB / infra changes are proposed and approved,
+  - how ownership and responsibility are distributed between backend and SRE/platform roles,
+  - where written guidelines and real behavior diverge.
+- Do not propose feature work or low-level code changes.
+
+Evidence
+- Base every claim on concrete evidence from the repository.
+- Cite specific items such as:
+  - Issue numbers (e.g., "Issue #101")
+  - PR numbers (e.g., "PR #210")
+  - Files (e.g., "CONTRIBUTING.md", ".github/LABELS.md", "docs/api_versioning.md", "ops/incidents.md")
+  - Label usage patterns (e.g., both sev1 and sev-1 are used).
+
+Output
+- Write a concise Markdown report saved as meta_analysis_report.md in the repository root.
+- Use clear headings and short paragraphs.
+- Summarize:
+  - the main collaboration and governance patterns you observe,
+  - key inconsistencies between documented processes and actual behavior,
+  - what a new backend engineer or SRE would need to understand to work effectively here.
+
+
+GitHub Copilot: Proceeding to search the repository for collaboration docs, labels, and ops artifacts to gather evidence. I'll look for CONTRIBUTING, .github, docs and ops files.
+
+Searched for files matching `**/*.{md,yml}`, 10 matches
+
+Great — I'll open the key docs to extract concrete evidence (CONTRIBUTING, .github/*, docs/*, ops/*).
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-secondary/v-ShuLiu_26_01_09/CONTRIBUTING.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-secondary/v-ShuLiu_26_01_09/.github/LABELS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-secondary/v-ShuLiu_26_01_09/.github/PULL_REQUESTS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-secondary/v-ShuLiu_26_01_09/docs/api_versioning.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-secondary/v-ShuLiu_26_01_09/ops/incidents.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-secondary/v-ShuLiu_26_01_09/ops/oncall.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-secondary/v-ShuLiu_26_01_09/.github/ISSUES.md)
+
+Perfect! I found clear evidence of intended processes (in CONTRIBUTING.md, api_versioning.md, `.github/*`) and several places where practice diverges (Issues #101–#108, PRs #210–#221, incidents.md, oncall.md). My next step is to write a concise Markdown report and save it as `meta_analysis_report.md` in the repo root.
+
+Created [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-secondary/v-ShuLiu_26_01_09/meta_analysis_report.md)
+
+Nice! The report is saved as meta_analysis_report.md in the repo root. My next step is to open focused issues/PRs to implement one or two short recommendations (label normalization, or a breaking-change ADR) if you'd like.## Done ✅
+
+I've created a concise repository report and saved it to:
+- meta_analysis_report.md (repo root)
+
+### Highlights (short)
+- Documentation states intended processes for branching, incidents, reviews, and versioning (CONTRIBUTING.md, api_versioning.md), but practice diverges in key areas. 🔧  
+- Evidence of gaps: inconsistent labels (`sev1` vs `sev-1`), Slack-first incident handling, CI overrides for hotfix merges, unclear approval path for breaking changes. Cited examples: Issues #101–#108 and PRs #210, #213, #215, #220, #221. 📚  
+- Immediate risks: incomplete incident postmortems, unclear authority for breaking API/DB changes, inconsistent labels making triage harder. ⚠️
+
+---
+
+If you want, I can:
+- Open an issue proposing canonical labels and a cleanup plan, or
+- Draft a short ADR for breaking-change approvals and rollout guidance.
+
+Which one should I do next?
+
+Made changes.
