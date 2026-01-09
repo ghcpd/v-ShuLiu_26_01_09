@@ -1,0 +1,92 @@
+User: Prompt
+
+You are maintaining an open-source backend Todo API service (Python/FastAPI) that has recently gained more contributors, including backend engineers and SREs.
+
+Task
+- Review the repository’s collaboration and operations artifacts: issues, pull requests, labels, .github metadata, docs/, ops/, and CONTRIBUTING.
+- Infer how backend work and operations are actually coordinated in practice over time.
+- Focus on:
+  - how incidents and hotfixes are handled,
+  - how breaking API / DB / infra changes are proposed and approved,
+  - how ownership and responsibility are distributed between backend and SRE/platform roles,
+  - where written guidelines and real behavior diverge.
+- Do not propose feature work or low-level code changes.
+
+Evidence
+- Base every claim on concrete evidence from the repository.
+- Cite specific items such as:
+  - Issue numbers (e.g., "Issue #101")
+  - PR numbers (e.g., "PR #210")
+  - Files (e.g., "CONTRIBUTING.md", ".github/LABELS.md", "docs/api_versioning.md", "ops/incidents.md")
+  - Label usage patterns (e.g., both sev1 and sev-1 are used).
+
+Output
+- Write a concise Markdown report saved as meta_analysis_report.md in the repository root.
+- Use clear headings and short paragraphs.
+- Summarize:
+  - the main collaboration and governance patterns you observe,
+  - key inconsistencies between documented processes and actual behavior,
+  - what a new backend engineer or SRE would need to understand to work effectively here.
+
+
+GitHub Copilot: I'll analyze the repository's collaboration and operations artifacts to understand how work is coordinated. Let me start by gathering evidence from the available files. 
+
+Created 4 todos
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/CONTRIBUTING.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/docs/api_versioning.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/docs/architecture.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/ops/incidents.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/ops/oncall.md)
+
+Now let me search for .github metadata and look for label patterns or other evidence: 
+
+Starting: *Search for .github metadata and labels* (2/4)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09)
+
+Searched for regex `Issue #|PR #|#\d{1,4}`, 20 results
+
+Great! Now let me read the .github metadata files: 
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/.github)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/.github/ISSUES.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/.github/PULL_REQUESTS.md)
+
+Now let me read the labels and milestones files: 
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/.github/LABELS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/.github/MILESTONES.md)
+
+Now I have enough evidence. Let me analyze patterns and create the report: 
+
+Starting: *Create meta_analysis_report.md* (4/4)
+
+Created [](file:///c%3A/Users/v-shuliu1/test/0109/grok-fast/v-ShuLiu_26_01_09/meta_analysis_report.md)
+
+Completed: *Create meta_analysis_report.md* (4/4)
+
+I've completed the meta-analysis and created meta_analysis_report.md in the repository root. 
+
+The report analyzes collaboration and operations patterns based on concrete evidence from the repository, identifying five key areas:
+
+1. **Incident handling**: Process compliance breaks down under pressure—postmortems are often deferred, labels are inconsistent (`sev1` vs `sev-1`), and CI gates get overridden.
+
+2. **Breaking changes**: No clear approval authority; decisions happen in verbal discussions that aren't consistently documented (Issue #105, PR #220).
+
+3. **Role boundaries**: Oncall effectively has override authority during incidents regardless of backend/SRE designation (PR #213, Issue #101).
+
+4. **Label inconsistency**: Multiple conventions coexist (`bug`/`type:bug`/`defect`, `area:api`/`infra`), making reporting difficult (Issue #108).
+
+5. **Documentation debt**: Significant gaps between written guidelines and actual practice across incidents, deployments, and change management (PR #221).
+
+All claims are backed by specific references to issues, PRs, and documentation files. The report concludes with practical guidance for new backend engineers and SREs joining the project.
+
+Made changes.
