@@ -1,0 +1,60 @@
+User: Prompt
+
+You are maintaining an open-source backend Todo API service (Python/FastAPI) that has recently gained more contributors, including backend engineers and SREs.
+
+Task
+- Review the repository’s collaboration and operations artifacts: issues, pull requests, labels, .github metadata, docs/, ops/, and CONTRIBUTING.
+- Infer how backend work and operations are actually coordinated in practice over time.
+- Focus on:
+  - how incidents and hotfixes are handled,
+  - how breaking API / DB / infra changes are proposed and approved,
+  - how ownership and responsibility are distributed between backend and SRE/platform roles,
+  - where written guidelines and real behavior diverge.
+- Do not propose feature work or low-level code changes.
+
+Evidence
+- Base every claim on concrete evidence from the repository.
+- Cite specific items such as:
+  - Issue numbers (e.g., "Issue #101")
+  - PR numbers (e.g., "PR #210")
+  - Files (e.g., "CONTRIBUTING.md", ".github/LABELS.md", "docs/api_versioning.md", "ops/incidents.md")
+  - Label usage patterns (e.g., both sev1 and sev-1 are used).
+
+Output
+- Write a concise Markdown report saved as meta_analysis_report.md in the repository root.
+- Use clear headings and short paragraphs.
+- Summarize:
+  - the main collaboration and governance patterns you observe,
+  - key inconsistencies between documented processes and actual behavior,
+  - what a new backend engineer or SRE would need to understand to work effectively here.
+
+
+GitHub Copilot: I'll scan the repo files the prompt asked me to analyze, then I'll extract evidence for the report.
+
+Searched for files matching `**/*`, 21 matches
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a3s430/v-ShuLiu_26_01_09/CONTRIBUTING.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a3s430/v-ShuLiu_26_01_09/.github/LABELS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a3s430/v-ShuLiu_26_01_09/.github/PULL_REQUESTS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a3s430/v-ShuLiu_26_01_09/.github/MILESTONES.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a3s430/v-ShuLiu_26_01_09/docs/api_versioning.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a3s430/v-ShuLiu_26_01_09/ops/incidents.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a3s430/v-ShuLiu_26_01_09/ops/oncall.md)
+
+I reviewed the repository docs and PR examples and found that incidents, hotfixes, and approvals are documented but followed inconsistently. I'll create a short meta-analysis report and save it as `meta_analysis_report.md`.
+
+Created 3 todos
+
+Created [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a3s430/v-ShuLiu_26_01_09/meta_analysis_report.md)
+
+Completed: *Draft meta analysis report* (2/3)
+
+Done — I wrote and saved a concise meta-analysis as meta_analysis_report.md in the repo root.
+
+Made changes.
