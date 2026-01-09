@@ -27,9 +27,3 @@ Output
   - the main collaboration and governance patterns you observe,
   - key inconsistencies between documented processes and actual behavior,
   - what a new backend engineer or SRE would need to understand to work effectively here.
-
-Title
-Backend Todo API – Collaboration & Operational Decision-Making (Meta Analysis)
-
-Description
-Evaluate how well the model can read a real-world backend service repository and extract evidence-based insights about collaboration patterns, operational decision-making, and gaps between written process and actual practice.
