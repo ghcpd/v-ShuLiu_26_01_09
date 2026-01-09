@@ -1,0 +1,113 @@
+User: Prompt
+
+You are maintaining an open-source backend Todo API service (Python/FastAPI) that has recently gained more contributors, including backend engineers and SREs.
+
+Task
+- Review the repository’s collaboration and operations artifacts: issues, pull requests, labels, .github metadata, docs/, ops/, and CONTRIBUTING.
+- Infer how backend work and operations are actually coordinated in practice over time.
+- Focus on:
+  - how incidents and hotfixes are handled,
+  - how breaking API / DB / infra changes are proposed and approved,
+  - how ownership and responsibility are distributed between backend and SRE/platform roles,
+  - where written guidelines and real behavior diverge.
+- Do not propose feature work or low-level code changes.
+
+Evidence
+- Base every claim on concrete evidence from the repository.
+- Cite specific items such as:
+  - Issue numbers (e.g., "Issue #101")
+  - PR numbers (e.g., "PR #210")
+  - Files (e.g., "CONTRIBUTING.md", ".github/LABELS.md", "docs/api_versioning.md", "ops/incidents.md")
+  - Label usage patterns (e.g., both sev1 and sev-1 are used).
+
+Output
+- Write a concise Markdown report saved as meta_analysis_report.md in the repository root.
+- Use clear headings and short paragraphs.
+- Summarize:
+  - the main collaboration and governance patterns you observe,
+  - key inconsistencies between documented processes and actual behavior,
+  - what a new backend engineer or SRE would need to understand to work effectively here.
+
+
+GitHub Copilot: Perfect — I'll analyze the repo's collaboration & ops artifacts and produce the requested evidence-based report. I'll start by scanning CONTRIBUTING, docs/, ops/, and any .github metadata to collect concrete citations, then draft and add `meta_analysis_report.md` to the repository.
+
+Next step: I'll search the repository for the relevant files and label/issue/PR references and summarize findings.
+
+Created 6 todos
+
+Searched for files matching `**/*.{md,yml,yaml,py,txt}`, 20 matches
+
+Searched for regex `oncall|incident|hotfix|breaking|break|version|API version|SRE|owner|ownership|CODEOWNERS|maintain|severity|sev` (`**/*.{md,yml,yaml,py,txt}`), 152 results
+
+Created [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-m23a1s255-new/v-ShuLiu_26_01_09/meta_analysis_report.md)
+
+Completed: *Collect collaboration & ops artifacts* (1/6)
+
+Great — I reviewed the docs and repo artifacts and saved a concise, evidence-backed analysis to meta_analysis_report.md. Next step: would you like me to open a PR that (a) normalizes severity labels and (b) adds a one-page incident checklist to CONTRIBUTING.md?Preamble — short summary
+- Found: docs are comprehensive but practice diverges on severity labels, post‑mortems, and who approves breaking changes (concrete examples cited).  
+- Next: I saved an evidence-backed meta-analysis to meta_analysis_report.md; tell me if you want a PR to fix the highest-priority infra/process gaps. ✅
+
+## meta-analysis (summary)
+File: meta_analysis_report.md — added to repository root.
+
+High-level takeaway
+- The project has explicit, sensible policies for incidents, hotfixes, and API versioning, but real-world behavior is pragmatic and sometimes inconsistent (oncall fast-tracks, label drift, missing postmortems).  
+- A new engineer should assume decisions are often made by whoever is oncall and should proactively link incidents → hotfix PRs → postmortems.
+
+---
+
+## What I checked (evidence)
+- Docs & guidelines: CONTRIBUTING.md, api_versioning.md, oncall.md, incidents.md  
+- GitHub metadata: LABELS.md, PULL_REQUESTS.md, ISSUES.md  
+- Concrete examples referenced in the report: Issue #102, Issue #104, Issue #108; PR #210, PR #213, PR #215, PR #221; main.py (version shown).
+
+---
+
+## Key findings (concise, evidence-linked) ✅
+- Incident response is oncall-led in practice (ops/oncall.md; incident timelines in incidents.md). Example: oncall SRE actions in the 2024-10-01 incident.  
+- Severity-label drift: `sev1` vs `sev-1` vs `priority-high` are all used (see LABELS.md, Issue #102, Issue #104). ⚠️  
+- Hotfix behavior: maintainers/oncall sometimes merge hotfixes with admin override and flaky tests during outages (documented in PULL_REQUESTS.md, PR #210).  
+- Breaking changes: rules exist (api_versioning.md) but approval authority is ambiguous and ADRs are drafty (discussion in PULL_REQUESTS.md).  
+- Postmortem gap: some Sev1s resolved via PRs without formal postmortems in incidents.md (see PR #213 / PR #215 and notes in ISSUES.md).
+
+---
+
+## Documented vs actual — quick comparison (3 rows)
+- Incident labels: documented `sev1`/`sev2`/`sev3` — observed mixed use (`sev-1`, `priority-high`). (Evidence: LABELS.md, Issue #102, Issue #108)  
+- Post-incident reviews: required in incidents.md — several Sev1s missing formal postmortems (PR #213, PR #215).  
+- Breaking-change approvals: docs ask for versioning/reviews — real approvals sometimes decided ad hoc by oncall (see api_versioning.md, PULL_REQUESTS.md).
+
+---
+
+## Practical checklist for a new backend engineer or SRE 🔧
+- Read (in order): CONTRIBUTING.md, oncall.md, incidents.md, api_versioning.md.  
+- Triage: open `incident` issue, add `sev1`/`sev2`/`sev3` (prefer `sevN` form), tag `area:api|db|infra`.  
+- Hotfixes: use `hotfix/<incident-id>` branch; expect emergency merges during outages — always link PR → issue → postmortem.  
+- Breaking changes: get both backend and SRE/platform reviewers; if unclear, open an ADR and escalate to maintainers.
+
+---
+
+## Suggested low-effort operational fixes (non-code)
+- Normalize severity labels to `sev1`/`sev2`/`sev3` and document a short HOWTO in CONTRIBUTING.md (evidence: label drift).  
+- Require/automate linking: incident issue ↔ hotfix PR ↔ incidents.md postmortem.  
+- Clarify final approver for breaking DB/schema changes in api_versioning.md or an ADR.
+
+---
+
+Files & examples cited (select)
+- CONTRIBUTING.md — hotfix workflow, labels
+- oncall.md, incidents.md — incident expectations and examples (2024-10-01, worker-stall)
+- api_versioning.md — versioning guidance (and noted gaps)
+- LABELS.md, PULL_REQUESTS.md, ISSUES.md — label/PR/issue behavior and examples
+- Issues/PRs called out in the report: Issue #102, Issue #104, Issue #108; PR #210, PR #213, PR #215, PR #221
+
+---
+
+Next actions — pick one
+1) I can open a small PR that normalizes severity labels and adds a 1‑page incident checklist to CONTRIBUTING.md.  
+2) I can create individual issues (label-normalization, postmortem SLAs, breaking-change-approval) so maintainers can triage.  
+3) Or nothing — I can wait for your direction.
+
+Would you like me to open PR(s) for (1) or create issues for (2)?
+
+Made changes.
