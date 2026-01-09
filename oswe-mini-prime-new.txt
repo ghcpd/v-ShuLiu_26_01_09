@@ -1,0 +1,89 @@
+User: Prompt
+
+You are maintaining an open-source backend Todo API service (Python/FastAPI) that has recently gained more contributors, including backend engineers and SREs.
+
+Task
+- Review the repository’s collaboration and operations artifacts: issues, pull requests, labels, .github metadata, docs/, ops/, and CONTRIBUTING.
+- Infer how backend work and operations are actually coordinated in practice over time.
+- Focus on:
+  - how incidents and hotfixes are handled,
+  - how breaking API / DB / infra changes are proposed and approved,
+  - how ownership and responsibility are distributed between backend and SRE/platform roles,
+  - where written guidelines and real behavior diverge.
+- Do not propose feature work or low-level code changes.
+
+Evidence
+- Base every claim on concrete evidence from the repository.
+- Cite specific items such as:
+  - Issue numbers (e.g., "Issue #101")
+  - PR numbers (e.g., "PR #210")
+  - Files (e.g., "CONTRIBUTING.md", ".github/LABELS.md", "docs/api_versioning.md", "ops/incidents.md")
+  - Label usage patterns (e.g., both sev1 and sev-1 are used).
+
+Output
+- Write a concise Markdown report saved as meta_analysis_report.md in the repository root.
+- Use clear headings and short paragraphs.
+- Summarize:
+  - the main collaboration and governance patterns you observe,
+  - key inconsistencies between documented processes and actual behavior,
+  - what a new backend engineer or SRE would need to understand to work effectively here.
+
+
+GitHub Copilot: I'll analyze the repository's collaboration and operations artifacts to understand how backend work and operations are coordinated. Let me start by reviewing the available files systematically. 
+
+Created 6 todos
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/CONTRIBUTING.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09)
+
+Starting: *Review docs/ directory files* (2/6)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/docs/api_versioning.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/docs/architecture.md)
+
+Starting: *Review ops/ directory files* (3/6)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/ops/incidents.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/ops/oncall.md)
+
+Starting: *Check for .github metadata and labels* (4/6)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/.github)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/.github/LABELS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/.github/ISSUES.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/.github/PULL_REQUESTS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/.github/MILESTONES.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/README.md)
+
+Starting: *Create meta_analysis_report.md* (6/6)
+
+Created [](file:///c%3A/Users/v-shuliu1/test/0109/oswe-mini-prime-new/v-ShuLiu_26_01_09/meta_analysis_report.md)
+
+Completed: *Create meta_analysis_report.md* (6/6)
+
+I've completed the meta-analysis of the Todo API Service repository. The report has been saved as meta_analysis_report.md in the repository root.
+
+## Summary
+
+The analysis reveals significant divergence between documented processes and actual operational practices:
+
+**Key Findings:**
+- **Label inconsistency**: Multiple severity schemes (`sev1`, `sev-1`, `priority-high`) and bug labels (`bug`, `type:bug`, `defect`) coexist
+- **Incident handling gaps**: Some Sev1 incidents lack formal postmortems; escalation happens in Slack without GitHub trails
+- **Authority ambiguity**: Unclear who approves breaking API/DB changes; decisions made informally
+- **Hotfix bypasses**: Admin overrides used to merge PRs with failing CI during incidents
+- **Documentation lag**: Written policies in CONTRIBUTING.md and ops/ files don't reflect actual practice
+
+**Evidence cited** includes Issue #101-108, PR #210-221, and files across CONTRIBUTING.md, docs/, ops/, and .github/ directories.
+
+The report provides actionable recommendations for new backend engineers and SREs, highlighting that while formal guidelines exist, operational norms are learned through PR discussions, Slack conversations, and oncall handoffs.
+
+Made changes.
