@@ -1,0 +1,82 @@
+User: Prompt
+
+You are maintaining an open-source backend Todo API service (Python/FastAPI) that has recently gained more contributors, including backend engineers and SREs.
+
+Task
+- Review the repository’s collaboration and operations artifacts: issues, pull requests, labels, .github metadata, docs/, ops/, and CONTRIBUTING.
+- Infer how backend work and operations are actually coordinated in practice over time.
+- Focus on:
+  - how incidents and hotfixes are handled,
+  - how breaking API / DB / infra changes are proposed and approved,
+  - how ownership and responsibility are distributed between backend and SRE/platform roles,
+  - where written guidelines and real behavior diverge.
+- Do not propose feature work or low-level code changes.
+
+Evidence
+- Base every claim on concrete evidence from the repository.
+- Cite specific items such as:
+  - Issue numbers (e.g., "Issue #101")
+  - PR numbers (e.g., "PR #210")
+  - Files (e.g., "CONTRIBUTING.md", ".github/LABELS.md", "docs/api_versioning.md", "ops/incidents.md")
+  - Label usage patterns (e.g., both sev1 and sev-1 are used).
+
+Output
+- Write a concise Markdown report saved as meta_analysis_report.md in the repository root.
+- Use clear headings and short paragraphs.
+- Summarize:
+  - the main collaboration and governance patterns you observe,
+  - key inconsistencies between documented processes and actual behavior,
+  - what a new backend engineer or SRE would need to understand to work effectively here.
+
+
+GitHub Copilot: I'll analyze this repository's collaboration and operations patterns by examining the key artifacts. Let me start by gathering evidence from all the relevant files. 
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/CONTRIBUTING.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/README.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/docs/api_versioning.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/docs/architecture.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/ops/incidents.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/ops/oncall.md)
+
+Now let me check if there are any GitHub metadata files or additional documentation: 
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09)
+
+Searched for files matching `**/.github/**`, 4 matches
+
+Great! Let me read the GitHub metadata files: 
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/.github/LABELS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/.github/ISSUES.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/.github/PULL_REQUESTS.md)
+
+Read [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/.github/MILESTONES.md)
+
+Perfect! I now have comprehensive evidence. Let me create the analysis report: 
+
+Created [](file:///c%3A/Users/v-shuliu1/test/0109/Claude-haiku-4.5/v-ShuLiu_26_01_09/meta_analysis_report.md)
+
+Done. I've created meta_analysis_report.md with a comprehensive analysis of the repository's collaboration and operations patterns.
+
+**Key findings:**
+
+1. **Incident Response:** Documented processes (formal issues, postmortems in ops/incidents.md) exist but real coordination happens in Slack and oncall notes. Severity labels are inconsistently applied (`sev1` vs. `sev-1`).
+
+2. **Breaking Changes:** Authority to approve API/schema changes is undefined. Decisions happen in undocumented architecture reviews, not systematically recorded. Issue #105 was closed without resolving the question.
+
+3. **Role Boundaries:** Backend and SRE responsibilities are clear in normal work but collapse under incident pressure. SREs can merge code with admin override during emergencies (PR #213), but no incident playbook codifies exceptions.
+
+4. **Labels:** Multiple overlapping conventions exist (`bug`/`type:bug`/`defect`; `sev1`/`sev-1`; `area:api`/`api`). Issue #108 is open requesting normalization but with no runbook.
+
+5. **Postmortems:** Intended to live in incidents.md but in practice are deferred to "next batch" (Issue #102) or added only as PR comments (Issue #101).
+
+The report includes a roadmap for new engineers/SREs on what to understand, documents to find, and gaps to expect—all grounded in specific evidence (Issues #101–#108, PRs #210–#221, and .github metadata).
+
+Made changes.
