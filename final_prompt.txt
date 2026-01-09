@@ -1,0 +1,29 @@
+User: Prompt
+
+You are maintaining an open-source backend Todo API service (Python/FastAPI) that has recently gained more contributors, including backend engineers and SREs.
+
+Task
+- Review the repository’s collaboration and operations artifacts: issues, pull requests, labels, .github metadata, docs/, ops/, and CONTRIBUTING.
+- Infer how backend work and operations are actually coordinated in practice over time.
+- Focus on:
+  - how incidents and hotfixes are handled,
+  - how breaking API / DB / infra changes are proposed and approved,
+  - how ownership and responsibility are distributed between backend and SRE/platform roles,
+  - where written guidelines and real behavior diverge.
+- Do not propose feature work or low-level code changes.
+
+Evidence
+- Base every claim on concrete evidence from the repository.
+- Cite specific items such as:
+  - Issue numbers (e.g., "Issue #101")
+  - PR numbers (e.g., "PR #210")
+  - Files (e.g., "CONTRIBUTING.md", ".github/LABELS.md", "docs/api_versioning.md", "ops/incidents.md")
+  - Label usage patterns (e.g., both sev1 and sev-1 are used).
+
+Output
+- Write a concise Markdown report saved as meta_analysis_report.md in the repository root.
+- Use clear headings and short paragraphs.
+- Summarize:
+  - the main collaboration and governance patterns you observe,
+  - key inconsistencies between documented processes and actual behavior,
+  - what a new backend engineer or SRE would need to understand to work effectively here.
